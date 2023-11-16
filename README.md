@@ -20,6 +20,11 @@ Express authentication template using Passport + Flash messages + custom middlew
 | name | String | Must be provided |
 | email | String | Must be unique / used for login |
 | password | String | Stored as a hash |
+| favorite truck brand | String | Stored as a hash |
+| manual or automatic | String | Stored as a hash |
+| local, regional, or otr | String | Stored as a hash |
+
+
 | createdAt | Date | Auto-generated |
 | updatedAt | Date | Auto-generated |
 
@@ -34,6 +39,9 @@ Express authentication template using Passport + Flash messages + custom middlew
 | POST | /auth/signup | auth.js | Creates User |
 | GET | /auth/logout | auth.js | Removes session info |
 | GET | /profile | server.js | Regular User Profile |
+| UPDATE | /profile | server.js | Regular User Profile |
+| DELETE | /profile | server.js | Regular User Profile |
+
 
 ## `1` Fork & Clone Project & Install Dependencies
 `1` The first thing that we are going to do is `fork` and `clone`
