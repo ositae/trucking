@@ -23,8 +23,6 @@ Express authentication template using Passport + Flash messages + custom middlew
 | favorite truck brand | String | Stored as a hash |
 | manual or automatic | String | Stored as a hash |
 | local, regional, or otr | String | Stored as a hash |
-
-
 | createdAt | Date | Auto-generated |
 | updatedAt | Date | Auto-generated |
 
@@ -41,6 +39,7 @@ Express authentication template using Passport + Flash messages + custom middlew
 | GET | /profile | server.js | Regular User Profile |
 | UPDATE | /profile | server.js | Regular User Profile |
 | DELETE | /profile | server.js | Regular User Profile |
+make test to test routes
 
 
 ## `1` Fork & Clone Project & Install Dependencies

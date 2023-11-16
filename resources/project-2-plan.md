@@ -7,9 +7,9 @@ Review the Project 2 requirements and check out some [examples](https://romebell
 In this space below, list **THREE** ideas for your Project 2. For each idea, include [user stories](https://www.atlassian.com/agile/project-management/user-stories) for each idea and a link to the API(s) you want to use for it.
 
 --------------------------------------------------------
-1. 
-2. 
-3.
+1. A trucker taking a dive into software engineering and join both fields. 
+2. Creating a trucking blog that allows truckers to sign up, log in, answer a series of fun trucking questions, and write a blog about trucking industry.
+3. Truckers need a place online to vent out, share ideas, and build an online community.
 ---------------------------------------------------------
 
 Make a PR when you're done!
