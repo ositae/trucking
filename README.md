@@ -12,6 +12,33 @@ Express authentication template using Passport + Flash messages + custom middlew
 * Passwords that are hashed with BCrypt
 * EJS Templating and EJS Layouts
 
+
+
+## User Story
+
+
+• As a user, I want to register and blog about trucking in a web application.
+
+• As a user, I will be prompted to enter my name, email, password, profession and whether I am CDL holder or not.
+
+• As a user, I want to be able to login from time to time to check my account and update my information if necessary.
+
+
+• As a user, when I login, I will be prompted a series of  questions related to trucking. 
+
+• These questions can be:
+     if I am a CDL holder, what endorsement do I have (if any); what is my favorite truck brand; do I prefer manual or automatic transmission; do I prefer local, regional, or otr; do I prefer a straight job or a trailer. 
+
+• As a user, I will be provided a textbox to blog about my trucking experience.
+
+• As a user, I expect users to interact with other about their experience with trucking. 
+
+• As a user, I expect to see different points of view; whether a professional truck driver, or someone with no experience about trucks everyone has an experience about trucking.
+
+• As a user, this web application will unite all perspectives about trucking experience. 
+
+
+
 ### User Model
 
 | Column Name | Data Type | Notes |
@@ -20,9 +47,20 @@ Express authentication template using Passport + Flash messages + custom middlew
 | name | String | Must be provided |
 | email | String | Must be unique / used for login |
 | password | String | Stored as a hash |
+| CDL holder, yes or no | String | Stored as a hash |
+| profession | String | Stored as a hash |
+| createdAt | Date | Auto-generated |
+| updatedAt | Date | Auto-generated |
+
+
+### Trucking Model
+
+
+| endorsement | String | Stored as a hash |
 | favorite truck brand | String | Stored as a hash |
 | manual or automatic | String | Stored as a hash |
 | local, regional, or otr | String | Stored as a hash |
+| straight jobs or trailers | String | Stored as a hash |
 | createdAt | Date | Auto-generated |
 | updatedAt | Date | Auto-generated |
 
@@ -144,3 +182,4 @@ sequelize db:create
 - `package.json`: The settings file that stores scripts and list of dependencies that are used inside your app.
 - `README.md`: The main markdown file that written to explain the details your app.
 - `server.js`: The main file that controls the entire application.
+
