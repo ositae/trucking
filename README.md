@@ -79,6 +79,7 @@ Express authentication template using Passport + Flash messages + custom middlew
 | DELETE | /profile | server.js | Regular User Profile |
 make test to test routes
 
+![Alt text](image.png)
 
 ## `1` Fork & Clone Project & Install Dependencies
 `1` The first thing that we are going to do is `fork` and `clone`
