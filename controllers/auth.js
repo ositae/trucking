@@ -5,6 +5,7 @@ const passport = require('../config/ppConfig');
 // import models
 const { user } = require('../models');
 
+
 router.get("/signup", (req, res) => {
   return res.render("auth/signup");
 });
