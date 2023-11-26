@@ -7,8 +7,8 @@ const { user } = require("../models");
 router.get("/user", (req, res) => {
   return res.render("user/user");
 });
-router.get("/user/add", (req, res) => {
-  return res.render("user/add");
+router.get("/user/profession", (req, res) => {
+  return res.render("user/profession");
 });
 router.get("/user/edit/:id", (req, res) => {
   let id = req.params.id;
