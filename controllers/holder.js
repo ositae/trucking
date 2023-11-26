@@ -32,10 +32,10 @@ router.get("/holder/edit/:id", (req, res) => {
 //                             type: req.body.type,
 //                             });
 //                             newholder.save((err, data) => {
-router.put("/holder/endorsement", (req, res) => {
-  let endorsementId = req.query.endorsement;
-  console.log("Endorsement Id", endorsementId);
-  holder.updateOne({ _id: endorsementId }, function (err, result) {
+router.put("/holder/truckBrand", (req, res) => {
+  let truckBrandId = req.query.truckBrand;
+  console.log("Truck Brand Id", truckBrandId);
+  holder.updateOne({ _id: truckBrandId }, function (err, result) {
     if (!err) {
       console.log("Updated");
       res.send("Successfully updated!");
