@@ -25,11 +25,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    {
-        sequelize,
-    modelName: 'trucking',
-    };
+}, {
+sequelize,
+modelName: 'trucking',
+tableName: 'trucking',
 });
-
 return trucking;
 };

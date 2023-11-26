@@ -37,11 +37,11 @@ holder.init({
   truckType: {   // trailer or straight job
     type: DataTypes.STRING,
     allowNull: true,
-  },
-  {
-    sequelize,
-  modelName: 'holder', // sequelize database with trucking database
-  },
+},
+}, {
+sequelize,
+modelName: 'holder',
+tableName: 'user'
 });
 return holder;
 };
