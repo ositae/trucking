@@ -41,9 +41,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.render('index');
-})
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/user', require('./controllers/user'));
@@ -55,6 +52,10 @@ app.use('/trucking', require('./controllers/trucking'));
 //   const { id, name, email } = req.user.get(); 
 //   res.render('profile', { id, name, email });
 // });
+
+app.get('/', (req, res) => {
+  res.render('index');
+})
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
