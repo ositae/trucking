@@ -9,7 +9,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const methodOveride = require('method-override');
 const holder = require('./models');
 const trucking = require('./models');
-const user = require('./models')
+const user = require('./models');
 
 // environment variables
 SECRET_SESSION = process.env.SECRET_SESSION;
@@ -51,18 +51,6 @@ app.use('/trucking', require('./controllers/trucking'));
 app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get(); 
   res.render('profile', { id, name, email });
-});
-app.get('/user', (req, res) => {
-  const { id, name, email, profession, holder } = req.user.get(); 
-  res.render('user', { id, name, email, profession, holder });
-});
-app.get('/holder', (req, res) => {
-  const { id, truckBrand, truckTrans, workType, truckType } = req.user.get(); 
-  res.render('holder', { id, truckBrand, truckTrans, workType, truckType });
-});
-app.get('/trucking', (req, res) => {
-  const { id, textBox } = req.user.get(); 
-  res.render('trucking', { id, textBox });
 });
 
 

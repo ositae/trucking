@@ -5,21 +5,22 @@ const passport = require("../config/ppConfig");
 // import models
 const { trucking } = require("../models");
 
-router.get("/trucking", (req, res) => {
-  return res.render("trucking/trucking");
+router.get("/", (req, res) => {
+    const { id, textBox } = req.user.get(); 
+    res.render('trucking/index', { id, textBox });
+  });
+router.get("/add", (req, res) => {
+  return res.render("trucking/index");
 });
-router.get("/trucking/add", (req, res) => {
-  return res.render("trucking/add");
-});
-router.get("/trucking/edit/:id", (req, res) => {
+router.get("/edit/:id", (req, res) => {
   let id = req.params.id;
   console.log(id);
   // find the user by its ID and render it to the edit view
   trucking.findById(id, (err, user) => {
     if (!user) {
-      return res.redirect("/trucking");
+      return res.redirect("/");
     } else {
-      return res.render("trucking/edit", { user: user });
+      return res.render("trucking/index", { user: user });
     }
   });
 });
@@ -33,7 +34,7 @@ router.get("/trucking/edit/:id", (req, res) => {
 //                             type: req.body.type,
 //                             });
 //                             newTrucking.save((err, data) => {
-router.put("/trucking/endorsement", (req, res) => {
+router.put("/endorsement", (req, res) => {
   let userId = req.query.id;
   console.log("Endorsement Id", userId);
   trucking.updateOne({ _id: userId }, function (err, result) {
@@ -47,7 +48,7 @@ router.put("/trucking/endorsement", (req, res) => {
   });
 });
 
-router.delete("trucking/textBox", (req, res) => {
+router.delete("/textBox", (req, res) => {
   let deleteId = req.query.textBox;
   trucking.remove({ _id: deleteId }, function (err, result) {
     if (!err) {

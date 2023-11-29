@@ -5,21 +5,22 @@ const passport = require("../config/ppConfig");
 // import models
 const { holder } = require("../models");
 
-router.get("/holder", (req, res) => {
-  return res.render("holder/holder");
+router.get("/", (req, res) => {
+    const { id, truckBrand, truckTrans, workType, truckType } = req.user.get(); 
+    res.render('holder/index', { id, truckBrand, truckTrans, workType, truckType });
+  });
+router.get("/add", (req, res) => {
+  return res.render("holder/index");
 });
-router.get("/holder/add", (req, res) => {
-  return res.render("holder/add");
-});
-router.get("/holder/edit/:id", (req, res) => {
+router.get("/edit/:id", (req, res) => {
   let id = req.params.id;
   console.log(id);
   // find the user by its ID and render it to the edit view
   holder.findById(id, (err, user) => {
     if (!user) {
-      return res.redirect("/holder");
+      return res.redirect("/");
     } else {
-      return res.render("holder/edit", { user: user });
+      return res.render("holder/index", { user: user });
     }
   });
 });
@@ -57,7 +58,7 @@ router.get("/holder/edit/:id", (req, res) => {
 //         }
 //       })
 //   });
-  router.put("/holder/truckBrand", (req, res) => {
+  router.put("/truckBrand", (req, res) => {
   let truckBrandId = req.query.truckBrand;
   console.log("Truck Brand Id", truckBrandId);
   holder.updateOne({ _id: truckBrandId }, function (err, result) {
@@ -71,7 +72,7 @@ router.get("/holder/edit/:id", (req, res) => {
   });
 });
 
-router.delete("holder/truckType", (req, res) => {
+router.delete("/truckType", (req, res) => {
   let deleteId = req.query.truckType;
   holder.remove({ _id: deleteId }, function (err, result) {
     if (!err) {

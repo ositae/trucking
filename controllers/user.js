@@ -1,25 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const passport = require("../config/ppConfig");
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 // import models
 const { user } = require("../models");
 
-router.get("/user", (req, res) => {
-  return res.render("user/user");
+router.get("/", isLoggedIn, (req, res) => {
+    const { id, name, email, profession, holder } = req.user.get(); 
+    res.render('profile', { id, name, email, profession, holder });
+  });
+router.get("/profession", (req, res) => {
+  return res.render("user/index");
 });
-router.get("/user/profession", (req, res) => {
-  return res.render("user/profession");
-});
-router.get("/user/edit/:id", (req, res) => {
+router.get("/edit/:id", (req, res) => {
   let id = req.params.id;
   console.log(id);
   // find the user by its ID and render it to the edit view
   user.findById(id, (err, user) => {
     if (!user) {
-      return res.redirect("/user");
+      return res.redirect("/");
     } else {
-      return res.render("user/edit", { user: user });
+      return res.render("user/index.ejs", { user: user });
     }
   });
 });
@@ -33,7 +35,7 @@ router.get("/user/edit/:id", (req, res) => {
 //                             type: req.body.type,
 //                             });
 //                             newuser.save((err, data) => {
-router.put("/user/profession", (req, res) => {
+router.put("/profession", (req, res) => {
   let professionId = req.query.profession;
   console.log("Profession Id", professionId);
   user.updateOne({ _id: professionId }, function (err, result) {
@@ -47,7 +49,7 @@ router.put("/user/profession", (req, res) => {
   });
 });
 
-router.delete("user/holder", (req, res) => {
+router.delete("/holder", (req, res) => {
   let deleteId = req.query.holder;
   user.remove({ _id: deleteId }, function (err, result) {
     if (!err) {
