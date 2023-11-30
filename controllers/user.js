@@ -10,10 +10,10 @@ router.get("/", isLoggedIn, (req, res) => {
     const { id, name, email, profession, holder } = req.user.get(); 
     res.render('profile', { id, name, email, profession, holder });
   });
-router.get("/profession", (req, res) => {
+router.get("/", (req, res) => {
   return res.render("user/index");
 });
-router.get("/edit/:id", (req, res) => {
+router.get("/:id/edit", (req, res) => {
   let id = req.params.id;
   console.log(id);
   // find the user by its ID and render it to the edit view
@@ -25,16 +25,17 @@ router.get("/edit/:id", (req, res) => {
     }
   });
 });
-// router.post("/user/add", (req, res) => {
-//                         let newuser = new user({
-//                             name: req.body.id,
-//                             plateNumber: req.body.plateNumber,
-//                             driver: req.body.driver,
-//                             capacity: req.body.capacity,
-//                             status: req.body.status,
-//                             type: req.body.type,
-//                             });
-//                             newuser.save((err, data) => {
+router.post('/', (req, res) => {
+  let index = data.length;
+  newProfesion.id = index; 
+  data.push(newProfession);
+  let stringData = JSON.stringify(data);
+  // write the data to the file
+  fs.writeFile('./models/', stringData, 'utf8', (error, result) => {
+      return res.redirect(`/Profession/${newProfession.Profession}`);
+  })
+  
+});
 router.put("/profession", (req, res) => {
   let professionId = req.query.profession;
   console.log("Profession Id", professionId);

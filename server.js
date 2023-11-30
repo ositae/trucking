@@ -7,10 +7,6 @@ const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const methodOveride = require('method-override');
-const holder = require('./models');
-const trucking = require('./models');
-const user = require('./models');
-
 // environment variables
 SECRET_SESSION = process.env.SECRET_SESSION;
 
@@ -44,13 +40,13 @@ app.use((req, res, next) => {
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/user', require('./controllers/user'));
-app.use('/holder', require('./controllers/holder'));
-app.use('/trucking', require('./controllers/trucking'));
+app.use('/holderstyle', require('./controllers/holderstyle'));
+app.use('/blog', require('./controllers/blog'));
 
 // Add this below /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
-  res.render('profile', { id, name, email });
+  const { id, name, email, profession, holder } = req.user.get(); 
+  res.render('profile', { id, name, email, profession, holder });
 });
 
 

@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   user.init({
+    holder: DataTypes.STRING,
+    profession: DataTypes.STRING,
     name: {
       type: DataTypes.STRING,
       validate: {
@@ -40,25 +42,8 @@ module.exports = (sequelize, DataTypes) => {
           msg: "Password must be between 8 and 99 characters"
         }
       }
-    },
-    profession: {  // profession of user in signup 
-      type: DataTypes.STRING,
-      allowNUll: true,
-      validate: {
-        len: {
-          args: [8,99],
-          msg: "Please input a valid profession"
-
     }
-  },
-    holder: { // is the user a cdl holder or not 
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-  },
-
-  }, 
-  {
+  }, {
     sequelize,
     modelName: 'user',
   });
